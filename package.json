@@ -1,0 +1,16 @@
+{
+  "name": "unit-7-words",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Карточки-тренажёр английских слов, Unit 7 (7.1-7.3)",
+  "author": "mistqkw",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.4.21"
+  }
+}
