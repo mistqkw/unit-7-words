@@ -1,23 +1,23 @@
 <!doctype html>
-<html lang="ru" data-theme="dark">
+<html lang="pl" data-theme="dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="theme-color" content="#0a0a0c" />
-    <meta name="description" content="Тренажёр английских слов: Unit 7, разделы 7.1–7.3, карточки, тест и грамматика." />
-    <title>Unit 7 — слова</title>
+    <meta name="description" content="Trener angielskich słówek: Unit 7, działy 7.1–7.3, fiszki, test i gramatyka." />
+    <title>Unit 7 — słówka</title>
   </head>
   <body>
     <header class="nav">
       <div class="nav__inner">
         <a class="nav__brand" href="#top">unit<em>7</em></a>
-        <nav class="nav__tabs" aria-label="Разделы">
-          <button class="nav__tab is-active" data-tab="study" type="button">Слова</button>
-          <button class="nav__tab" data-tab="grammar" type="button">Грамматика</button>
+        <nav class="nav__tabs" aria-label="Działy">
+          <button class="nav__tab is-active" data-tab="study" type="button">Słówka</button>
+          <button class="nav__tab" data-tab="grammar" type="button">Gramatyka</button>
         </nav>
         <div class="nav__meta">
           <span class="label" id="nav-progress">0%</span>
-          <button class="icon-btn" id="theme-btn" type="button" aria-label="Сменить тему">
+          <button class="icon-btn" id="theme-btn" type="button" aria-label="Zmień motyw">
             <svg viewBox="0 0 20 20" aria-hidden="true">
               <circle cx="10" cy="10" r="7.5" />
               <path d="M10 2.5v15" />
@@ -30,58 +30,58 @@
     <main id="top">
       <section class="hero" id="view-study">
         <p class="label">technikum · angielski · kartkówka</p>
-        <h1>Unit 7 — <em>words</em></h1>
+        <h1>Unit 7 — <em>słówka</em></h1>
         <p class="lede">
-          Слова и выражения из разделов 7.1–7.3, магазины, money-выражения и word families.
-          Карточки, тест и грамматика в одном экране.
+          Słowa i wyrażenia z działów 7.1–7.3, sklepy, wyrażenia o pieniądzach i word families.
+          Fiszki, test i gramatyka na jednym ekranie.
         </p>
         <div class="facts" id="facts">
-          <span>102 слова</span>
-          <span>4 раздела</span>
-          <span>3 режима</span>
+          <span>102 słowa</span>
+          <span>4 działy</span>
+          <span>3 tryby</span>
         </div>
       </section>
 
-      <section class="panel" id="panel" aria-label="Тренажёр">
+      <section class="panel" id="panel" aria-label="Trener">
         <div class="panel__head">
           <div class="search">
             <svg viewBox="0 0 20 20" aria-hidden="true">
               <circle cx="9" cy="9" r="5.5" />
               <path d="M13.2 13.2 17 17" />
             </svg>
-            <input id="search" type="search" placeholder="поиск по слову или переводу" autocomplete="off" spellcheck="false" />
+            <input id="search" type="search" placeholder="szukaj słowa lub tłumaczenia" autocomplete="off" spellcheck="false" />
           </div>
-          <div class="seg" id="mode-seg" role="group" aria-label="Режим">
+          <div class="seg" id="mode-seg" role="group" aria-label="Tryb">
             <button type="button" data-mode="en-pl" class="is-active">EN → PL</button>
             <button type="button" data-mode="pl-en">PL → EN</button>
-            <button type="button" data-mode="mix">Микс</button>
+            <button type="button" data-mode="mix">Miks</button>
           </div>
-          <button class="chip chip--toggle" id="test-toggle" type="button" aria-pressed="false">Тест</button>
+          <button class="chip chip--toggle" id="test-toggle" type="button" aria-pressed="false">Test</button>
         </div>
 
         <div class="filters">
-          <div class="filters__group" id="status-filter" role="group" aria-label="Фильтр по знанию">
-            <button type="button" class="chip is-active" data-status="all">Все</button>
-            <button type="button" class="chip" data-status="unknown">Не знаю</button>
-            <button type="button" class="chip" data-status="known">Знаю</button>
+          <div class="filters__group" id="status-filter" role="group" aria-label="Filtr według znajomości">
+            <button type="button" class="chip is-active" data-status="all">Wszystkie</button>
+            <button type="button" class="chip" data-status="unknown">Nie znam</button>
+            <button type="button" class="chip" data-status="known">Znam</button>
           </div>
-          <div class="filters__group filters__group--sections" id="section-filter" role="group" aria-label="Разделы">
-            <button type="button" class="chip is-active" data-section="all">Все разделы</button>
+          <div class="filters__group filters__group--sections" id="section-filter" role="group" aria-label="Działy">
+            <button type="button" class="chip is-active" data-section="all">Wszystkie działy</button>
           </div>
         </div>
 
         <div class="progress">
-          <div class="rail" id="rail" role="slider" aria-label="Прогресс" tabindex="0" aria-valuemin="1" aria-valuemax="1" aria-valuenow="1">
+          <div class="rail" id="rail" role="slider" aria-label="Postęp" tabindex="0" aria-valuemin="1" aria-valuemax="1" aria-valuenow="1">
             <div class="rail__segs" id="rail-segs"></div>
           </div>
           <div class="progress__meta">
             <span id="counter">1 / 1</span>
-            <span class="progress__stats" id="stats">знаю 0 · не знаю 0 · всего 0</span>
+            <span class="progress__stats" id="stats">znam 0 · nie znam 0 · razem 0</span>
           </div>
         </div>
 
         <div class="stage" id="stage">
-          <div class="card" id="card" tabindex="0" aria-label="Карточка">
+          <div class="card" id="card" tabindex="0" aria-label="Fiszka">
             <div class="card__inner">
               <div class="card__face card__face--front">
                 <div class="card__top">
@@ -90,7 +90,7 @@
                 </div>
                 <div class="card__word" id="front-word">—</div>
                 <div class="card__foot">
-                  <span class="label" id="front-label">tap — переворот</span>
+                  <span class="label" id="front-label">tap — obróć</span>
                   <span class="label" id="front-side">EN</span>
                 </div>
               </div>
@@ -101,7 +101,7 @@
                 </div>
                 <div class="card__word card__word--back" id="back-word">—</div>
                 <div class="card__foot">
-                  <span class="label" id="back-label">tap — назад</span>
+                  <span class="label" id="back-label">tap — wstecz</span>
                   <span class="label" id="back-side">PL</span>
                 </div>
               </div>
@@ -111,12 +111,12 @@
           <div class="test" id="test" hidden>
             <div class="test__top">
               <span class="tag" id="test-tag">7.1</span>
-              <span class="label" id="test-hint">введи перевод</span>
+              <span class="label" id="test-hint">wpisz tłumaczenie</span>
             </div>
             <p class="test__prompt" id="test-prompt">—</p>
             <form class="test__form" id="test-form" autocomplete="off">
-              <input id="test-input" type="text" placeholder="перевод…" autocomplete="off" autocapitalize="off" spellcheck="false" />
-              <button class="btn" type="submit" id="test-submit">Проверить</button>
+              <input id="test-input" type="text" placeholder="tłumaczenie…" autocomplete="off" autocapitalize="off" spellcheck="false" />
+              <button class="btn" type="submit" id="test-submit">Sprawdź</button>
             </form>
             <p class="test__feedback" id="test-feedback" aria-live="polite"></p>
           </div>
@@ -124,47 +124,47 @@
 
         <div class="controls" id="card-controls">
           <div class="controls__row controls__row--three">
-            <button class="btn btn--ghost" id="prev" type="button">← Назад</button>
-            <button class="btn" id="flip" type="button">Перевернуть</button>
-            <button class="btn btn--ghost" id="next" type="button">Дальше →</button>
+            <button class="btn btn--ghost" id="prev" type="button">← Wstecz</button>
+            <button class="btn" id="flip" type="button">Odwróć</button>
+            <button class="btn btn--ghost" id="next" type="button">Dalej →</button>
           </div>
           <div class="controls__row controls__row--two">
-            <button class="btn btn--unknown" id="dont-know" type="button">Не знаю ↓</button>
-            <button class="btn btn--know" id="know" type="button">Знаю ↑</button>
+            <button class="btn btn--unknown" id="dont-know" type="button">Nie znam ↓</button>
+            <button class="btn btn--know" id="know" type="button">Znam ↑</button>
           </div>
         </div>
 
         <p class="keys">
-          ← → листать · пробел — переворот · ↑ знаю · ↓ не знаю · свайпы на телефоне
+          ← → przewijaj · spacja — obróć · ↑ znam · ↓ nie znam · na telefonie: przesuwanie
         </p>
 
         <div class="panel__foot">
-          <button class="link-btn" id="reset" type="button">Сбросить прогресс</button>
-          <span class="label" id="stored">прогресс хранится на этом устройстве</span>
+          <button class="link-btn" id="reset" type="button">Resetuj postęp</button>
+          <span class="label" id="stored">postęp zapisany na tym urządzeniu</span>
         </div>
       </section>
 
       <section class="grammar" id="view-grammar" hidden>
         <div class="grammar__head">
-          <p class="label">grammar notes</p>
-          <h2>Правила для <em>kartkówki</em></h2>
-          <p class="lede">Коротко, по-русски, с примерами на английском. Всё, что нужно для заданий 7.1–7.3.</p>
+          <p class="label">notatki z gramatyki</p>
+          <h2>Zasady na <em>kartkówkę</em></h2>
+          <p class="lede">Krótko, po polsku, z przykładami po angielsku. Wszystko, czego potrzeba do zadań 7.1–7.3.</p>
         </div>
         <div class="grammar__list" id="grammar-list"></div>
       </section>
     </main>
 
     <footer class="foot">
-      <span class="label">unit 7 · 7.1 vocabulary · 7.2 grammar · 7.3 listening</span>
-      <span class="label">progress saved locally</span>
+      <span class="label">unit 7 · 7.1 słownictwo · 7.2 gramatyka · 7.3 słuchanie</span>
+      <span class="label">postęp zapisany lokalnie</span>
     </footer>
 
     <dialog class="dialog" id="reset-dialog">
-      <h3>Сбросить прогресс?</h3>
-      <p>Отметки «знаю» и «не знаю» удалятся. Слова и фильтры останутся на месте.</p>
+      <h3>Zresetować postęp?</h3>
+      <p>Znaczniki „znam” i „nie znam” zostaną usunięte. Słowa i filtry pozostaną na miejscu.</p>
       <div class="dialog__actions">
-        <button class="btn btn--ghost" id="reset-cancel" type="button">Отмена</button>
-        <button class="btn" id="reset-confirm" type="button">Сбросить</button>
+        <button class="btn btn--ghost" id="reset-cancel" type="button">Anuluj</button>
+        <button class="btn" id="reset-confirm" type="button">Resetuj</button>
       </div>
     </dialog>
 

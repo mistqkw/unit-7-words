@@ -1,7 +1,7 @@
 export const SECTIONS = [
-  { id: 'v71', label: '7.1 Vocabulary', short: '7.1' },
-  { id: 'g72', label: '7.2 Grammar', short: '7.2' },
-  { id: 'l73', label: '7.3 Listening', short: '7.3' },
+  { id: 'v71', label: '7.1 Słownictwo', short: '7.1' },
+  { id: 'g72', label: '7.2 Gramatyka', short: '7.2' },
+  { id: 'l73', label: '7.3 Słuchanie', short: '7.3' },
   { id: 'wf', label: 'Word families', short: 'WF' },
 ];
 
@@ -143,57 +143,57 @@ export const WORDS_BY_SECTION = SECTIONS.map((s) => ({
 
 export const GRAMMAR = [
   {
-    title: 'Покупки: три устойчивых выражения',
+    title: 'Zakupy: stałe wyrażenia',
     rules: [
-      'do the shopping / go shopping = идти за покупками.',
-      'go window shopping = просто смотреть витрины.',
-      'have a sale = устраивать распродажу.',
+      'do the shopping / go shopping = iść na zakupy (codzienne, po jedzenie itp.).',
+      'go window shopping = po prostu oglądać witryny sklepowe, bez kupowania.',
+      'have a sale = urządzać wyprzedaż.',
     ],
     examples: ['I do the shopping on Saturdays.', 'We went window shopping after school.', 'The store has a sale this weekend.'],
   },
   {
-    title: 'Деньги: устойчивые выражения',
+    title: 'Pieniądze: stałe wyrażenia',
     rules: [
-      'make a living = зарабатывать на жизнь.',
-      'be in debt = быть в долгу.',
-      'get a refund = получить возврат.',
-      'keep the receipt = сохранить чек.',
+      'make a living = zarabiać na życie, utrzymywać się.',
+      'be in debt = mieć dług, być zadłużonym.',
+      'get a refund = dostać zwrot pieniędzy.',
+      'keep the receipt = zachować paragon.',
     ],
     examples: ['She makes a living as a baker.', 'He is in debt again.', 'You can get a refund with the receipt.'],
   },
   {
-    title: 'look + прилагательное',
+    title: 'look + przymiotnik',
     rules: [
-      'После look идёт прилагательное: look smart, scruffy, fashionable, gorgeous, original, good.',
-      'look = «выглядеть», а не «смотреть»: You look smart today.',
+      'Po look stoi przymiotnik: look smart, scruffy, fashionable, gorgeous, original, good.',
+      'look = „wyglądać”, a nie „patrzeć”: You look smart today.',
     ],
     examples: ['You look smart today.', 'That jacket looks scruffy.', 'The shop window looks gorgeous.'],
   },
   {
     title: 'fit vs suit',
     rules: [
-      'fit = по размеру. The jeans fit me.',
-      'suit = идёт, подходит по стилю или цвету. That colour suits you.',
-      'В карточках оба переводятся «пасовать», но смысл разный — смотри на контекст.',
+      'fit = pasować rozmiarem. The jeans fit me.',
+      'suit = pasować stylem lub kolorem, być w czyimś stylu. That colour suits you.',
+      'Na fiszkach oba słowa tłumaczą się jako „pasować”, ale znaczą co innego — patrz na kontekst.',
     ],
     examples: ['These shoes fit me perfectly.', 'That colour suits you.'],
   },
   {
     title: 'Word families',
     rules: [
-      'Глагол → человек → вещь или процесс: earn → earner → earnings, invest → investor → investment.',
-      'В задании часто дают одно слово и просят другую форму. Смотри на место в предложении.',
-      'После a / an нужно существительное-человек: an investor, a producer, a trader.',
-      'В конце за глаголом часто существительное-процесс: the investment, the payment, the earnings.',
+      'Czasownik → osoba → rzecz lub proces: earn → earner → earnings, invest → investor → investment.',
+      'W zadaniu często podają jedno słowo i proszą o inną formę. Patrz, jakie miejsce zajmuje w zdaniu.',
+      'Po a / an potrzebny jest rzeczownik oznaczający osobę: an investor, a producer, a trader.',
+      'Na końcu zdania po czasowniku często stoi rzeczownik-proces: the investment, the payment, the earnings.',
     ],
     examples: ['He is a successful investor.', 'The payment arrived on time.', 'Her earnings grew last year.'],
   },
   {
-    title: "Магазины с 's",
+    title: "Sklepy z 's",
     rules: [
-      "Притяжательная форма с 's: baker's, chemist's, florist's, greengrocer's, butcher's.",
-      "Ещё: hairdresser's, jeweller's, newsagent's, optician's, stationer's, estate agent's.",
-      "В таких названиях 's не значит «чей-то» — это просто название магазина.",
+      "Dopełniacz saksoński z 's: baker's, chemist's, florist's, greengrocer's, butcher's.",
+      "Dalej: hairdresser's, jeweller's, newsagent's, optician's, stationer's, estate agent's.",
+      "W takich nazwach 's nie znaczy „czyjś” — to po prostu nazwa sklepu.",
     ],
     examples: ["I'm going to the baker's.", 'The chemist\u2019s is closed today.', "She works at the florist's."],
   },

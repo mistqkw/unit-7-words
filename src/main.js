@@ -8,6 +8,15 @@ const KEY_THEME = 'u7.theme.v1';
 
 const $ = (id) => document.getElementById(id);
 
+const pluralWords = (n) => {
+  const m10 = n % 10;
+  const m100 = n % 100;
+  let form = 'słów';
+  if (n === 1) form = 'słowo';
+  else if (m10 >= 2 && m10 <= 4 && (m100 < 12 || m100 > 14)) form = 'słowa';
+  return `${n} ${form}`;
+};
+
 const store = {
   read(key, fallback) {
     try {
@@ -107,6 +116,7 @@ const matchesQuery = (item) => {
 
 const buildView = () => {
   let items = WORDS.filter((item) => {
+    if (state.test && item.isFamily) return false;
     if (state.section !== 'all' && item.section !== state.section) return false;
     const status = state.progress[item.id];
     if (state.status === 'known' && status !== 'known') return false;
@@ -139,9 +149,9 @@ const current = () => view[state.index];
 
 const updateFacts = () => {
   $('facts').innerHTML = [
-    `${WORDS.length} слов`,
-    '4 раздела',
-    state.test ? 'режим теста' : '3 режима',
+    pluralWords(WORDS.length),
+    '4 działy',
+    state.test ? 'tryb testu' : '3 tryby',
   ]
     .map((fact) => `<span>${fact}</span>`)
     .join('');
@@ -170,7 +180,7 @@ const renderStats = () => {
   const known = WORDS.filter((w) => state.progress[w.id] === 'known').length;
   const unknown = WORDS.filter((w) => state.progress[w.id] === 'unknown').length;
   $('nav-progress').textContent = `${Math.round((known / total) * 100)}%`;
-  $('stats').textContent = `знаю ${known} · не знаю ${unknown} · всего ${total}`;
+  $('stats').textContent = `znam ${known} · nie znam ${unknown} · razem ${total}`;
 };
 
 const renderCard = () => {
@@ -181,9 +191,9 @@ const renderCard = () => {
   $('rail').setAttribute('aria-disabled', view.length ? 'false' : 'true');
 
   if (!item) {
-    front.textContent = 'ничего не найдено';
+    front.textContent = 'nic nie znaleziono';
     front.className = 'card__word is-long';
-    back.textContent = 'измени фильтр или поиск';
+    back.textContent = 'zmień filtr lub wyszukiwanie';
     back.className = 'card__word card__word--back';
     $('counter').textContent = '0 / 0';
     $('card-tag').textContent = '—';
@@ -205,16 +215,16 @@ const renderCard = () => {
   back.className = `card__word card__word--back ${sizeClass(backText, 'text')}`;
 
   $('front-side').textContent = dir === 'en-pl' ? 'EN' : 'PL';
-  $('back-side').textContent = item.isFamily ? 'формы' : dir === 'en-pl' ? 'PL' : 'EN';
-  $('front-label').textContent = item.isFamily ? 'tap — все формы' : 'tap — переворот';
-  $('back-label').textContent = 'tap — назад';
+  $('back-side').textContent = item.isFamily ? 'formy' : dir === 'en-pl' ? 'PL' : 'EN';
+  $('front-label').textContent = item.isFamily ? 'tap — wszystkie formy' : 'tap — obróć';
+  $('back-label').textContent = 'tap — wstecz';
 
   const tag = sectionLabel(item.section);
   $('card-tag').textContent = tag;
   $('back-tag').textContent = tag;
 
   const status = state.progress[item.id];
-  const stateText = status === 'known' ? 'знаю' : status === 'unknown' ? 'не знаю' : 'новая';
+  const stateText = status === 'known' ? 'znam' : status === 'unknown' ? 'nie znam' : 'nowe';
   const stateCls = status === 'known' ? 'is-known' : status === 'unknown' ? 'is-unknown' : '';
   $('card-state').textContent = stateText;
   $('back-state').textContent = stateText;
@@ -228,7 +238,7 @@ const renderTest = () => {
   const item = current();
   const prompt = $('test-prompt');
   if (!item) {
-    prompt.textContent = state.section === 'wf' ? 'word families — только в карточках' : 'ничего не найдено';
+    prompt.textContent = state.section === 'wf' ? 'word families — tylko na fiszkach' : 'nic nie znaleziono';
     prompt.className = 'test__prompt is-long';
     $('test-tag').textContent = '—';
     return;
@@ -239,8 +249,8 @@ const renderTest = () => {
   prompt.textContent = question;
   prompt.className = `test__prompt ${sizeClass(question, 'display')}`;
   $('test-tag').textContent = sectionLabel(item.section);
-  $('test-hint').textContent = dir === 'en-pl' ? 'переведи на польский' : 'переведи на английский';
-  $('test-input').placeholder = dir === 'en-pl' ? 'по-польски…' : 'по-английски…';
+  $('test-hint').textContent = dir === 'en-pl' ? 'przetłumacz na polski' : 'przetłumacz na angielski';
+  $('test-input').placeholder = dir === 'en-pl' ? 'po polsku…' : 'po angielsku…';
   $('test-input').dataset.answer = answerSide;
 };
 
@@ -252,13 +262,13 @@ const resetTestFields = () => {
   const input = $('test-input');
   input.value = '';
   input.disabled = false;
-  $('test-submit').textContent = 'Проверить';
+  $('test-submit').textContent = 'Sprawdź';
 };
 
 const applyFlipped = (flipped) => {
   state.flipped = flipped;
   $('card').classList.toggle('is-flipped', flipped);
-  $('flip').textContent = flipped ? 'Свернуть' : 'Перевернуть';
+  $('flip').textContent = flipped ? 'Zwiń' : 'Odwróć';
 };
 
 const renderAll = ({ keepFlip = false } = {}) => {
@@ -273,7 +283,7 @@ const renderAll = ({ keepFlip = false } = {}) => {
   $('card').classList.toggle('is-hidden', state.test);
   $('test-toggle').setAttribute('aria-pressed', String(state.test));
   $('test-toggle').classList.toggle('is-active', state.test);
-  $('flip').textContent = state.test ? 'Показать ответ' : state.flipped ? 'Свернуть' : 'Перевернуть';
+  $('flip').textContent = state.test ? 'Pokaż odpowiedź' : state.flipped ? 'Zwiń' : 'Odwróć';
   document.querySelectorAll('#status-filter .chip').forEach((btn) => {
     btn.classList.toggle('is-active', btn.dataset.status === state.status);
   });
@@ -348,10 +358,10 @@ const revealAnswer = () => {
   const answer = $('test-input').dataset.answer || '';
   const first = answer.trim().charAt(0).toLowerCase();
   const fb = $('test-feedback');
-  fb.textContent = `ответ: ${answer} · подсказка: ${first}…`;
+  fb.textContent = `odpowiedź: ${answer} · podpowiedź: ${first}…`;
   fb.className = 'test__feedback';
   $('test-input').value = answer.length > 60 ? answer.slice(0, 57) + '…' : answer;
-  $('test-submit').textContent = 'Дальше';
+  $('test-submit').textContent = 'Dalej';
 };
 
 const submitTest = () => {
@@ -374,17 +384,17 @@ const submitTest = () => {
     renderStats();
     renderRail();
     renderCard();
-    fb.textContent = `верно · ${answerSide}`;
+    fb.textContent = `dobrze · ${answerSide}`;
     fb.className = 'test__feedback is-ok';
     state.revealed = true;
     input.disabled = true;
-    $('test-submit').textContent = 'Дальше';
+    $('test-submit').textContent = 'Dalej';
     return;
   }
 
   state.attempts += 1;
   if (state.attempts === 1) {
-    fb.textContent = `не совсем · подсказка: ${first.toLowerCase()}…`;
+    fb.textContent = `niezupełnie · podpowiedź: ${first.toLowerCase()}…`;
     fb.className = 'test__feedback is-bad';
     input.select();
     return;
@@ -395,12 +405,12 @@ const submitTest = () => {
   renderStats();
   renderRail();
   renderCard();
-  fb.textContent = `неверно · ответ: ${answerSide}`;
+  fb.textContent = `źle · odpowiedź: ${answerSide}`;
   fb.className = 'test__feedback is-bad';
   state.revealed = true;
   input.value = answerSide.length > 60 ? answerSide.slice(0, 57) + '…' : answerSide;
   input.disabled = true;
-  $('test-submit').textContent = 'Дальше';
+  $('test-submit').textContent = 'Dalej';
 };
 
 const setIndex = (index) => {
@@ -525,7 +535,7 @@ const wire = () => {
   $('reset').addEventListener('click', () => {
     const dialog = $('reset-dialog');
     if (typeof dialog.showModal === 'function') dialog.showModal();
-    else if (window.confirm('Сбросить прогресс?')) clearProgress();
+    else if (window.confirm('Zresetować postęp?')) clearProgress();
   });
   $('reset-cancel').addEventListener('click', () => $('reset-dialog').close());
   $('reset-confirm').addEventListener('click', () => {
