@@ -107,7 +107,6 @@ const matchesQuery = (item) => {
 
 const buildView = () => {
   let items = WORDS.filter((item) => {
-    if (state.test && item.isFamily) return false;
     if (state.section !== 'all' && item.section !== state.section) return false;
     const status = state.progress[item.id];
     if (state.status === 'known' && status !== 'known') return false;

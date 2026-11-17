@@ -421,13 +421,8 @@ main {
 }
 .filters__group {
   display: flex;
+  flex-wrap: wrap;
   gap: 6px;
-  overflow-x: auto;
-  padding-bottom: 2px;
-  scrollbar-width: none;
-}
-.filters__group::-webkit-scrollbar {
-  display: none;
 }
 
 .progress {
@@ -930,8 +925,17 @@ main {
   }
   .card__face,
   .test {
-    min-height: 400px;
+    min-height: 380px;
     padding: 26px;
+  }
+  .card__word {
+    font-size: 46px;
+  }
+  .card__word.is-long {
+    font-size: 34px;
+  }
+  .card__word.is-xlong {
+    font-size: 26px;
   }
   .grammar__list {
     grid-template-columns: 1fr 1fr;
